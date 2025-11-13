@@ -5,6 +5,8 @@ from data.France.dataloader import get_dataloader as get_france_dataloader
 from data.France.data_transforms import France_segmentation_transform
 from data.PASTIS24.dataloader import get_dataloader as get_pastis_dataloader
 from data.PASTIS24.data_transforms import PASTIS_segmentation_transform
+from data.SpaceNet7.dataloader import get_dataloader as get_spacenet7_dataloader
+from data.SpaceNet7.data_transforms import SpaceNet7_transform
 from utils.config_files_utils import get_params_values, read_yaml
 
 
@@ -34,6 +36,11 @@ def get_dataloaders(config):
             paths_file=train_config['paths'], root_dir=train_config['base_dir'],
             transform=PASTIS_segmentation_transform(model_config, is_training=True),
             batch_size=train_config['batch_size'], shuffle=True, num_workers=train_config['num_workers'])
+    elif train_config['dataset'] == 'SpaceNet7':
+        dataloaders['train'] = get_spacenet7_dataloader(
+            paths_file=train_config['paths'], root_dir=train_config['base_dir'],
+            transform=SpaceNet7_transform(model_config, is_training=True),
+            batch_size=train_config['batch_size'], shuffle=True, num_workers=train_config['num_workers'])
     else:
         dataloaders['train'] = get_france_dataloader(
             paths_file=train_config['paths'], root_dir=train_config['base_dir'],
@@ -52,6 +59,11 @@ def get_dataloaders(config):
         dataloaders['eval'] = get_pastis_dataloader(
             paths_file=eval_config['paths'], root_dir=eval_config['base_dir'],
             transform=PASTIS_segmentation_transform(model_config, is_training=False),
+            batch_size=eval_config['batch_size'], shuffle=False, num_workers=eval_config['num_workers'])
+    elif eval_config['dataset'] == 'SpaceNet7':
+        dataloaders['eval'] = get_spacenet7_dataloader(
+            paths_file=eval_config['paths'], root_dir=eval_config['base_dir'],
+            transform=SpaceNet7_transform(model_config, is_training=False),
             batch_size=eval_config['batch_size'], shuffle=False, num_workers=eval_config['num_workers'])
     else:
         dataloaders['eval'] = get_france_dataloader(

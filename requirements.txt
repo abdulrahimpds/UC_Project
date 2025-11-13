@@ -1,0 +1,17 @@
+rasterio
+geopandas
+shapely
+fiona
+einops
+mmcv
+tensorboard
+tqdm
+pandas
+numpy
+scikit-learn
+scikit-image
+matplotlib
+seaborn
+pyyaml
+opencv-python
+Pillow

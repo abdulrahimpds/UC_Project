@@ -40,3 +40,11 @@ PASTIS24_fold5:
     paths_eval: ".../fold-paths/fold_3_paths.csv"
     paths_test: ".../fold-paths/fold_4_paths.csv"
 # ------------------------------------------------------------------------------------------------------------------
+
+# SpaceNet7 urban building segmentation ------------------------------------------------------------------------------
+SpaceNet7:
+    basedir: "data/SpaceNet7"
+    paths_train: "data/SpaceNet7/train_aois.csv"
+    paths_eval: "data/SpaceNet7/val_aois.csv"
+    paths_test: "data/SpaceNet7/test_aois.csv"
+# ------------------------------------------------------------------------------------------------------------------

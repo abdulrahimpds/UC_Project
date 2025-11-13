@@ -1,1 +1,6 @@
 .venv
+*.csv
+__pycache__
+data/SpaceNet7/train
+data/SpaceNet7/test
+data/SpaceNet7/val
