@@ -29,6 +29,21 @@ For the initial setup, please follow the instructions for downloading and instal
 
         conda install pytorch torchvision torchaudio cudatoolkit=10.1 -c pytorch-nightly
 
+## Alternative Environment Setup (that I use)
+1. **Creating the Environment**: Navigate to the code directory in your terminal and create the environment by installing and using `portableenv`
+        
+        pip install portableenv
+
+        python -m portableenv .venv
+        
+
+2. **Activating the Environment**: Activate the newly created environment with:
+        
+        .venv\Scripts\activate
+
+3. **Dependencies Installation**: Install the required Python modules
+
+        pip install -r requirements.txt
 
 ## Experiment Setup
 

@@ -1,8 +1,9 @@
+# lazy imports to avoid loading legacy dependencies (torchfcn/chainer) unless actually needed
 from models.UNet3D.unet3d import UNet3D
 from models.UNet3D.unet3df import UNet3D_CSCL
-from models.CropTypeMapping.models import FCN_CRNN
 from models.BiConvRNN.biconv_rnn import BiRNNSequentialEncoder
 from models.TSViT.TSViTdense import TSViT
+from models.TSViT.TSViTdense_ST import TSViT_ST
 from models.TSViT.TSViTcls import TSViTcls
 
 def get_model(config, device):
@@ -15,6 +16,8 @@ def get_model(config, device):
         return UNet3D(model_config).to(device)
 
     if model_config['architecture'] == "UNET2D-CLSTM":  # "FCN_CRNN":
+        # lazy import to avoid torchfcn dependency unless actually needed
+        from models.CropTypeMapping.models import FCN_CRNN
         return FCN_CRNN(model_config).cuda()
 
     if model_config['architecture'] == "ConvBiRNN":
@@ -26,6 +29,9 @@ def get_model(config, device):
 
     if model_config['architecture'] == "TSViT":
         return TSViT(model_config).to(device)
+
+    if model_config['architecture'] == "TSViT-ST":
+        return TSViT_ST(model_config).to(device)
 
     else:
         raise NameError("Model architecture %s not found, choose from: 'UNET3D', 'UNET3Df', 'UNET2D-CLSTM', 'TSViT', 'TSViTcls'")

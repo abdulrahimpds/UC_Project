@@ -15,3 +15,7 @@ seaborn
 pyyaml
 opencv-python
 Pillow
+--extra-index-url https://download.pytorch.org/whl/cu130
+torch
+torchaudio
+torchvision
