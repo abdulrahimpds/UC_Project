@@ -1,0 +1,52 @@
+MODEL:
+  architecture: "UNET3D"
+  shape_pattern: "NTHWC"
+  img_res: 64
+  max_seq_len: 24
+  num_channels: 4
+  num_classes: 2
+  dropout: 0.0
+
+DATASETS:
+  train:
+    dataset: "SpaceNet7"
+    label_map:
+    max_seq_len: 24
+    batch_size: 4
+    extra_data:
+    num_workers: 4
+  eval:
+    dataset: "SpaceNet7"
+    label_map:
+    max_seq_len: 24
+    batch_size: 8
+    extra_data:
+    num_workers: 4
+  test:
+    dataset: "SpaceNet7"
+    label_map:
+    max_seq_len: 24
+    batch_size: 8
+    extra_data:
+    num_workers: 4
+
+SOLVER:
+  num_epochs: 1
+  loss_function: masked_cross_entropy
+  class_weights:
+  lr_scheduler:
+  lr_base: 0.0003
+  lr_decay: 0.95
+  dr_epochs: 1
+  reset_lr: True
+  weight_decay: 0.0
+  reset_lr_at_epoch:
+
+CHECKPOINT:
+  load_from_checkpoint:
+  partial_restore: False
+  save_path: "models/sanity_checks/SpaceNet7/UNet3D"
+  train_metrics_steps: 10
+  eval_steps: 10
+  save_steps: 50
+  restart_clock: False

@@ -1,0 +1,63 @@
+MODEL:
+  architecture: "TSViT-ST"
+  img_res: 64
+  max_seq_len: 24
+  num_channels: 4
+  num_features: 16
+  num_classes: 2
+  ignore_background: False
+  dropout: 0.0
+  patch_size: 2
+  dim: 128
+  temporal_depth: 4
+  spatial_depth: 4
+  heads: 4
+  pool: "cls"
+  dim_head: 32
+  emb_dropout: 0.0
+  scale_dim: 4
+
+DATASETS:
+  train:
+    dataset: "SpaceNet7"
+    label_map:
+    max_seq_len: 24
+    batch_size: 4
+    extra_data:
+    num_workers: 4
+  eval:
+    dataset: "SpaceNet7"
+    label_map:
+    max_seq_len: 24
+    batch_size: 8
+    extra_data:
+    num_workers: 4
+  test:
+    dataset: "SpaceNet7"
+    label_map:
+    max_seq_len: 24
+    batch_size: 8
+    extra_data:
+    num_workers: 4
+
+SOLVER:
+  num_epochs: 1
+  num_warmup_epochs: 0
+  steps: (0, 200)
+  loss_function: masked_cross_entropy
+  class_weights:
+  lr_scheduler: "cosine"
+  lr_base: 0.001
+  lr_min: 0.000005
+  lr_start: 0.000001
+  num_cycles: 1
+  reset_lr: True
+  weight_decay: 0.0
+
+CHECKPOINT:
+  load_from_checkpoint:
+  partial_restore: False
+  save_path: "models/sanity_checks/SpaceNet7/TSViT-ST"
+  train_metrics_steps: 10
+  eval_steps: 10
+  save_steps: 50
