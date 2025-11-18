@@ -46,11 +46,26 @@ def get_net_trainable_params(net):
     
     
 def get_device(device_ids, allow_cpu=False):
+    print(f"get_device called with device_ids={device_ids}, allow_cpu={allow_cpu}")
+    print(f"torch.cuda.is_available() = {torch.cuda.is_available()}")
+    
     if torch.cuda.is_available():
-        device = torch.device("cuda:%d" % device_ids[0])
+        try:
+            device = torch.device("cuda:%d" % device_ids[0])
+            print(f"created device: {device}")
+            return device
+        except Exception as e:
+            print(f"error creating cuda device: {e}")
+            if allow_cpu:
+                print("falling back to CPU")
+                return torch.device("cpu")
+            else:
+                sys.exit(f"cuda device creation failed: {e}")
     elif allow_cpu:
         device = torch.device("cpu")
+        print(f"using cpu device: {device}")
+        return device
     else:
+        print(f"cuda not available and cpu not allowed")
         sys.exit("No allowed device is found")
-    return device
 
