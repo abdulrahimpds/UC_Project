@@ -37,10 +37,13 @@ def get_dataloaders(config):
             transform=PASTIS_segmentation_transform(model_config, is_training=True),
             batch_size=train_config['batch_size'], shuffle=True, num_workers=train_config['num_workers'])
     elif train_config['dataset'] == 'SpaceNet7':
+        cache_path = DATASET_INFO[train_config['dataset']].get('cache_train')
+        use_hdf5 = DATASET_INFO[train_config['dataset']].get('use_hdf5', False)
         dataloaders['train'] = get_spacenet7_dataloader(
             paths_file=train_config['paths'], root_dir=train_config['base_dir'],
             transform=SpaceNet7_transform(model_config, is_training=True),
-            batch_size=train_config['batch_size'], shuffle=True, num_workers=train_config['num_workers'])
+            batch_size=train_config['batch_size'], shuffle=True, num_workers=train_config['num_workers'],
+            cache_path=cache_path, use_hdf5=use_hdf5)
     else:
         dataloaders['train'] = get_france_dataloader(
             paths_file=train_config['paths'], root_dir=train_config['base_dir'],
@@ -61,10 +64,13 @@ def get_dataloaders(config):
             transform=PASTIS_segmentation_transform(model_config, is_training=False),
             batch_size=eval_config['batch_size'], shuffle=False, num_workers=eval_config['num_workers'])
     elif eval_config['dataset'] == 'SpaceNet7':
+        cache_path = DATASET_INFO[eval_config['dataset']].get('cache_eval')
+        use_hdf5 = DATASET_INFO[eval_config['dataset']].get('use_hdf5', False)
         dataloaders['eval'] = get_spacenet7_dataloader(
             paths_file=eval_config['paths'], root_dir=eval_config['base_dir'],
             transform=SpaceNet7_transform(model_config, is_training=False),
-            batch_size=eval_config['batch_size'], shuffle=False, num_workers=eval_config['num_workers'])
+            batch_size=eval_config['batch_size'], shuffle=False, num_workers=eval_config['num_workers'],
+            cache_path=cache_path, use_hdf5=use_hdf5)
     else:
         dataloaders['eval'] = get_france_dataloader(
             paths_file=eval_config['paths'], root_dir=eval_config['base_dir'],

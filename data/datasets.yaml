@@ -47,4 +47,8 @@ SpaceNet7:
     paths_train: "data/SpaceNet7/train_aois.csv"
     paths_eval: "data/SpaceNet7/val_aois.csv"
     paths_test: "data/SpaceNet7/test_aois.csv"
+    cache_train: "data/SpaceNet7/cache/train.h5"
+    cache_eval: "data/SpaceNet7/cache/val.h5"
+    cache_test: "data/SpaceNet7/cache/test.h5"
+    use_hdf5: True
 # ------------------------------------------------------------------------------------------------------------------

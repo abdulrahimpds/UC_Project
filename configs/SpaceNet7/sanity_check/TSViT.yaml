@@ -58,6 +58,6 @@ CHECKPOINT:
   load_from_checkpoint:
   partial_restore: False
   save_path: "models/sanity_checks/SpaceNet7/TSViT"
-  train_metrics_steps: 10
-  eval_steps: 10
-  save_steps: 50
+  train_metrics_steps: 100
+  eval_steps: 1300
+  save_steps: 5000

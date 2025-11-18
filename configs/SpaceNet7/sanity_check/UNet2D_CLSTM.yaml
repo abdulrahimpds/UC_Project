@@ -33,6 +33,7 @@ DATASETS:
 
 SOLVER:
   num_epochs: 1
+  steps: (0, 200)
   loss_function: masked_cross_entropy
   class_weights:
   lr_scheduler:
@@ -46,7 +47,7 @@ CHECKPOINT:
   load_from_checkpoint:
   partial_restore: True
   save_path: "models/sanity_checks/SpaceNet7/UNet2D_CLSTM"
-  train_metrics_steps: 10
-  eval_steps: 10
-  save_steps: 50
+  train_metrics_steps: 100
+  eval_steps: 1300
+  save_steps: 5000
   restart_clock: False
