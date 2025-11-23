@@ -36,10 +36,14 @@ SOLVER:
   num_epochs: 100
   loss_function: masked_cross_entropy
   class_weights:
-  lr_scheduler:
+  lr_scheduler: 'cosine'
   lr_base: 0.0003
+  lr_min: 1e-6
+  lr_start: 1e-7
   lr_decay: 0.95
   dr_epochs: 5
+  num_warmup_epochs: 5
+  num_cycles: 1
   reset_lr: True
   weight_decay: 0.000
   reset_lr_at_epoch:

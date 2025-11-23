@@ -10,7 +10,7 @@ given by:
 Changes to allow this are still in progess
 """
 from torchvision import models
-import torchfcn
+# torchfcn moved to lazy import to avoid ancient dependencies
 
 from models.CropTypeMapping.constants import *
 from models.CropTypeMapping.modelling.baselines import make_rf_model
@@ -265,6 +265,7 @@ def make_fcn_model(n_class, n_channel, freeze=True):
       returns the model!
     """
     ## load pretrained model
+    import torchfcn  # lazy import to avoid dependency issues
     fcn8s_pretrained_model=torch.load(torchfcn.models.FCN8s.download())
     fcn8s = FCN8(n_class, n_channel)
     fcn8s.load_state_dict(fcn8s_pretrained_model,strict=False)

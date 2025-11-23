@@ -20,11 +20,11 @@ S1_DIR = "s1_npy"
 S2_DIR = "s2_npy"
 NROW = 5
 
-# FILE PATHS: 
-BASE_DIR = os.getenv("HOME")
+# FILE PATHS:
+BASE_DIR = os.getenv("HOME") or os.path.expanduser("~")
 
-GCP_DATA_DIR = BASE_DIR + '/croptype_data/data'
-LOCAL_DATA_DIR = BASE_DIR + '/croptype_data_local/data'
+GCP_DATA_DIR = BASE_DIR + '/croptype_data/data' if BASE_DIR else None
+LOCAL_DATA_DIR = BASE_DIR + '/croptype_data_local/data' if BASE_DIR else None
 #LOCAL_DATA_DIR = 'data'
 
 HDF5_PATH = { 'ghana': LOCAL_DATA_DIR + '/ghana/final_data.hdf5_32',

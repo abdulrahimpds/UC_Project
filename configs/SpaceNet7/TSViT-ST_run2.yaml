@@ -22,7 +22,7 @@ DATASETS:
     dataset: "SpaceNet7"
     label_map:
     max_seq_len: 24
-    batch_size: 8  # reduced for 8gb vram
+    batch_size: 4  # spatial-first attention uses more memory
     extra_data:
     num_workers: 4
 
@@ -30,7 +30,7 @@ DATASETS:
     dataset: "SpaceNet7"
     label_map:
     max_seq_len: 24
-    batch_size: 16
+    batch_size: 8  # reduced to avoid oom
     extra_data:
     num_workers: 4
 
@@ -38,7 +38,7 @@ DATASETS:
     dataset: "SpaceNet7"
     label_map:
     max_seq_len: 24
-    batch_size: 16
+    batch_size: 8  # reduced to avoid oom
     extra_data:
     num_workers: 4
 
