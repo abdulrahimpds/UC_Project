@@ -1,6 +1,9 @@
 .venv
 *logs
 *.csv
+*.tex
+!results/*
+!results/analysis/*.csv
 __pycache__
 cache
 models/sanity_checks

@@ -19,21 +19,21 @@ echo ""
 echo "evaluating tsvit models..."
 python scripts/evaluate_on_test.py \
     --config configs/SpaceNet7/TSViT_run1.yaml \
-    --checkpoint models/saved_models/TSViT/run1/best.pth \
+    --checkpoint models/saved_models/SpaceNet7/TSViT/run1/best.pth \
     --device $DEVICE \
     --output $OUTPUT_CSV \
     --model_name TSViT_run1
 
 python scripts/evaluate_on_test.py \
     --config configs/SpaceNet7/TSViT_run2.yaml \
-    --checkpoint models/saved_models/TSViT/run2/best.pth \
+    --checkpoint models/saved_models/SpaceNet7/TSViT/run2/best.pth \
     --device $DEVICE \
     --output $OUTPUT_CSV \
     --model_name TSViT_run2
 
 python scripts/evaluate_on_test.py \
     --config configs/SpaceNet7/TSViT_run3.yaml \
-    --checkpoint models/saved_models/TSViT/run3/best.pth \
+    --checkpoint models/saved_models/SpaceNet7/TSViT/run3/best.pth \
     --device $DEVICE \
     --output $OUTPUT_CSV \
     --model_name TSViT_run3
@@ -43,21 +43,21 @@ echo ""
 echo "evaluating tsvit-st models..."
 python scripts/evaluate_on_test.py \
     --config configs/SpaceNet7/TSViT-ST_run1.yaml \
-    --checkpoint models/saved_models/TSViT-ST/run1/best.pth \
+    --checkpoint models/saved_models/SpaceNet7/TSViT-ST/run1/best.pth \
     --device $DEVICE \
     --output $OUTPUT_CSV \
     --model_name TSViT-ST_run1
 
 python scripts/evaluate_on_test.py \
     --config configs/SpaceNet7/TSViT-ST_run2.yaml \
-    --checkpoint models/saved_models/TSViT-ST/run2/best.pth \
+    --checkpoint models/saved_models/SpaceNet7/TSViT-ST/run2/best.pth \
     --device $DEVICE \
     --output $OUTPUT_CSV \
     --model_name TSViT-ST_run2
 
 python scripts/evaluate_on_test.py \
     --config configs/SpaceNet7/TSViT-ST_run3.yaml \
-    --checkpoint models/saved_models/TSViT-ST/run3/best.pth \
+    --checkpoint models/saved_models/SpaceNet7/TSViT-ST/run3/best.pth \
     --device $DEVICE \
     --output $OUTPUT_CSV \
     --model_name TSViT-ST_run3
@@ -67,21 +67,21 @@ echo ""
 echo "evaluating unet3d models..."
 python scripts/evaluate_on_test.py \
     --config configs/SpaceNet7/UNet3D_run1.yaml \
-    --checkpoint models/saved_models/UNet3D/run1/best.pth \
+    --checkpoint models/saved_models/SpaceNet7/UNet3D/run1/best.pth \
     --device $DEVICE \
     --output $OUTPUT_CSV \
     --model_name UNet3D_run1
 
 python scripts/evaluate_on_test.py \
     --config configs/SpaceNet7/UNet3D_run2.yaml \
-    --checkpoint models/saved_models/UNet3D/run2/best.pth \
+    --checkpoint models/saved_models/SpaceNet7/UNet3D/run2/best.pth \
     --device $DEVICE \
     --output $OUTPUT_CSV \
     --model_name UNet3D_run2
 
 python scripts/evaluate_on_test.py \
     --config configs/SpaceNet7/UNet3D_run3.yaml \
-    --checkpoint models/saved_models/UNet3D/run3/best.pth \
+    --checkpoint models/saved_models/SpaceNet7/UNet3D/run3/best.pth \
     --device $DEVICE \
     --output $OUTPUT_CSV \
     --model_name UNet3D_run3
