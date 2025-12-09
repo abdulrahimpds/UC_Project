@@ -77,6 +77,37 @@ def get_dataloaders(config):
             transform=France_segmentation_transform(model_config, eval_config, is_training=True),
             batch_size=eval_config['batch_size'], shuffle=False, num_workers=eval_config['num_workers'])
 
+    # TEST data (optional) ---------------------------------------------------------------------------------------------
+    if 'test' in config['DATASETS']:
+        test_config = config['DATASETS']['test']
+        test_config['bidir_input'] = model_config['architecture'] == "ConvBiRNN"
+        test_config['base_dir'] = DATASET_INFO[test_config['dataset']]['basedir']
+        test_config['paths'] = DATASET_INFO[test_config['dataset']]['paths_test']
+        
+        if test_config['dataset'] == 'MTLCC':
+            dataloaders['test'] = get_mtlcc_dataloader(
+                paths_file=test_config['paths'], root_dir=test_config['base_dir'],
+                transform=MTLCC_transform(model_config, test_config, is_training=False),
+                batch_size=test_config['batch_size'], shuffle=False, num_workers=test_config['num_workers'])
+        elif 'PASTIS' in test_config['dataset']:
+            dataloaders['test'] = get_pastis_dataloader(
+                paths_file=test_config['paths'], root_dir=test_config['base_dir'],
+                transform=PASTIS_segmentation_transform(model_config, is_training=False),
+                batch_size=test_config['batch_size'], shuffle=False, num_workers=test_config['num_workers'])
+        elif test_config['dataset'] == 'SpaceNet7':
+            cache_path = DATASET_INFO[test_config['dataset']].get('cache_test')
+            use_hdf5 = DATASET_INFO[test_config['dataset']].get('use_hdf5', False)
+            dataloaders['test'] = get_spacenet7_dataloader(
+                paths_file=test_config['paths'], root_dir=test_config['base_dir'],
+                transform=SpaceNet7_transform(model_config, is_training=False),
+                batch_size=test_config['batch_size'], shuffle=False, num_workers=test_config['num_workers'],
+                cache_path=cache_path, use_hdf5=use_hdf5)
+        else:
+            dataloaders['test'] = get_france_dataloader(
+                paths_file=test_config['paths'], root_dir=test_config['base_dir'],
+                transform=France_segmentation_transform(model_config, test_config, is_training=False),
+                batch_size=test_config['batch_size'], shuffle=False, num_workers=test_config['num_workers'])
+
     return dataloaders
 
 
