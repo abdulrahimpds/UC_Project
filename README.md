@@ -41,8 +41,6 @@ This repository has been extended to include an **Urban Computing project** that
 4. **Evaluate**: Run `scripts/evaluate_on_test.py` to generate test metrics
 5. **Analyze**: Use `scripts/analyze_results.py` to generate comparison plots and statistical tests
 
-For detailed information about the urban adaptation methodology and results, please refer to the project report in `.resources/report/`.
-
 ---
 
 ## Featured Research Publications
