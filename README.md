@@ -2,7 +2,7 @@
 
 Welcome to the dedicated repository for advancing land cover recognition through the application of state-of-the-art models on satellite imagery. This repository serves as a comprehensive resource for researchers and practitioners in the field, providing access to research code, detailed setup instructions, and guidelines for conducting experiments with satellite image timeseries data.
 
-## 🏙️ Urban Adaptation Project (2025)
+## Urban Adaptation Project (2025)
 
 This repository has been extended to include an **Urban Computing project** that adapts the TSViT (Temporo-Spatial Vision Transformer) architecture from agricultural applications to urban satellite image time series analysis.
 
