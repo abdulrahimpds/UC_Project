@@ -2,6 +2,49 @@
 
 Welcome to the dedicated repository for advancing land cover recognition through the application of state-of-the-art models on satellite imagery. This repository serves as a comprehensive resource for researchers and practitioners in the field, providing access to research code, detailed setup instructions, and guidelines for conducting experiments with satellite image timeseries data.
 
+## 🏙️ Urban Adaptation Project (2025)
+
+This repository has been extended to include an **Urban Computing project** that adapts the TSViT (Temporo-Spatial Vision Transformer) architecture from agricultural applications to urban satellite image time series analysis.
+
+### Project Overview
+
+**Title**: Adapting Vision Transformers for Urban Satellite Image Time Series
+
+**Research Question**: Does the temporal-first attention factorization of TSViT, originally designed for agricultural land cover classification, remain effective when applied to urban environments where spatial structure is highly informative?
+
+### Key Contributions
+
+- **Urban Dataset Integration**: Adapted TSViT to work with the SpaceNet7 multi-temporal urban development dataset for building detection
+- **Architectural Comparison**: Implemented and compared temporal-first (TSViT) vs. spatial-first (TSViT-ST) attention factorization strategies
+- **Comprehensive Evaluation**: Conducted systematic experiments with 3 training runs per model to assess stability and performance
+- **Baseline Comparison**: Benchmarked against 3D convolutional architectures (UNet3D)
+
+### Main Findings
+
+- **TSViT (Temporal-First)**: Maintains stable performance on urban data (IoU = 0.646 ± 0.031)
+- **TSViT-ST (Spatial-First)**: Exhibits severe training instability with 2/3 runs failing to converge (IoU < 0.10)
+- **UNet3D**: Achieves best performance (IoU = 0.672 ± 0.014), demonstrating the continued relevance of 3D convolutions for urban spatio-temporal modeling
+
+### Urban-Specific Components
+
+- **Data Pipeline**: `data/SpaceNet7/` - Custom dataloader, preprocessing, and transformations for SpaceNet7 dataset
+- **Model Variants**: `models/TSViT/TSViTdense_ST.py` - Spatial-first attention variant implementation
+- **Configuration Files**: `configs/SpaceNet7/` - Experiment configurations for all model variants
+- **Evaluation Scripts**: `scripts/evaluate_on_test.py`, `scripts/analyze_results.py` - Comprehensive evaluation and statistical analysis
+- **Results**: `results/analysis/` - Performance metrics, visualizations, and statistical tests
+
+### Quick Start for Urban Experiments
+
+1. **Setup Environment**: Follow the environment setup instructions below
+2. **Prepare SpaceNet7 Data**: Place the SpaceNet7 dataset in `data/SpaceNet7/train/`
+3. **Run Training**: Use configurations in `configs/SpaceNet7/` for different model variants
+4. **Evaluate**: Run `scripts/evaluate_on_test.py` to generate test metrics
+5. **Analyze**: Use `scripts/analyze_results.py` to generate comparison plots and statistical tests
+
+For detailed information about the urban adaptation methodology and results, please refer to the project report in `.resources/report/`.
+
+---
+
 ## Featured Research Publications
 
 This repository highlights contributions to the field through the following research publications:
