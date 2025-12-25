@@ -85,8 +85,8 @@ def plot_model_comparison(df, output_dir):
     plt.grid(axis='y', alpha=0.3, linestyle='--')
     plt.tight_layout()
     
-    output_path = Path(output_dir) / 'model_comparison.png'
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    output_path = Path(output_dir) / 'model_comparison.pdf'
+    plt.savefig(output_path, format='pdf', bbox_inches='tight')
     print(f"saved plot: {output_path}")
     plt.close()
 
@@ -121,8 +121,8 @@ def plot_perclass_iou(df, output_dir):
     plt.grid(axis='y', alpha=0.3, linestyle='--')
     plt.tight_layout()
     
-    output_path = Path(output_dir) / 'perclass_iou.png'
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    output_path = Path(output_dir) / 'perclass_iou.pdf'
+    plt.savefig(output_path, format='pdf', bbox_inches='tight')
     print(f"saved plot: {output_path}")
     plt.close()
 
@@ -153,8 +153,8 @@ def plot_run_variability(df, output_dir):
     plt.suptitle('performance variability across 3 runs', fontsize=14, fontweight='bold', y=1.02)
     plt.tight_layout()
     
-    output_path = Path(output_dir) / 'run_variability.png'
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    output_path = Path(output_dir) / 'run_variability.pdf'
+    plt.savefig(output_path, format='pdf', bbox_inches='tight')
     print(f"saved plot: {output_path}")
     plt.close()
 
